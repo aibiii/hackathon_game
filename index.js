@@ -1,6 +1,6 @@
-import Player from "./Player.js";
-import Ground from "./Ground.js";
 import CactiController from "./CactiController.js";
+import Ground from "./Ground.js";
+import Player from "./Player.js";
 import Score from "./Score.js";
 
 const canvas = document.getElementById("game");
@@ -19,10 +19,29 @@ const GROUND_WIDTH = 2400;
 const GROUND_HEIGHT = 24;
 const GROUND_AND_CACTUS_SPEED = 0.5;
 
+const cactusImagePaths = [
+  "images/cactus_1.png",
+  "images/cactus_2.png",
+  "images/cactus_3.png",
+  "images/cactus_4.png",
+  "images/cactus_5.png",
+  "images/cactus_6.png",
+  "images/cactus_7.png",
+  "images/cactus_8.png",
+  "images/cactus_9.png",
+  "images/cactus_10.png",
+  "images/cactus_11.png",
+  "images/cactus_12.png",
+  "images/cactus_13.png"
+];
+
 const CACTI_CONFIG = [
-  { width: 98 / 1.5, height: 100 / 1.5, image: "images/cactus_1.png" },
-  { width: 98 / 1.5, height: 100 / 1.5, image: "images/cactus_2.png" },
-  { width: 68 / 1.5, height: 70 / 1.5, image: "images/cactus_3.png" },
+  { width: 98 / 1.5, height: 100 / 1.5 },
+  { width: 98 / 1.5, height: 100 / 1.5 },
+  { width: 98 / 1.5, height: 90 / 1.5 },
+  { width: 68 / 1.5, height: 60 / 1.5 },
+  { width: 68 / 1.5, height: 60 / 1.5 },
+  { width: 105 / 1.5, height: 110 / 1.5 }
 ];
 
 //Game Objects
@@ -37,6 +56,11 @@ let gameSpeed = GAME_SPEED_START;
 let gameOver = false;
 let hasAddedEventListenersForRestart = false;
 let waitingToStart = true;
+
+function getRandomCactusImagePath() {
+  const randomIndex = Math.floor(Math.random() * cactusImagePaths.length);
+  return cactusImagePaths[randomIndex];
+}
 
 function createSprites() {
   const playerWidthInGame = PLAYER_WIDTH * scaleRatio;
@@ -66,7 +90,7 @@ function createSprites() {
 
   const cactiImages = CACTI_CONFIG.map((cactus) => {
     const image = new Image();
-    image.src = cactus.image;
+    image.src = getRandomCactusImagePath();
     return {
       image: image,
       width: cactus.width * scaleRatio,
