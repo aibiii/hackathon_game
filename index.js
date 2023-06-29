@@ -11,8 +11,8 @@ const GAME_SPEED_INCREMENT = 0.00001;
 
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 200;
-const PLAYER_WIDTH = 88 / 1.5; //58
-const PLAYER_HEIGHT = 94 / 1.5; //62
+const PLAYER_WIDTH = 80 / 1.5; //58
+const PLAYER_HEIGHT = 130 / 1.5; //62
 const MAX_JUMP_HEIGHT = GAME_HEIGHT;
 const MIN_JUMP_HEIGHT = 150;
 const GROUND_WIDTH = 2400;
@@ -20,7 +20,7 @@ const GROUND_HEIGHT = 24;
 const GROUND_AND_CACTUS_SPEED = 0.5;
 
 const CACTI_CONFIG = [
-  { width: 48 / 1.5, height: 100 / 1.5, image: "images/cactus_1.png" },
+  { width: 98 / 1.5, height: 100 / 1.5, image: "images/cactus_1.png" },
   { width: 98 / 1.5, height: 100 / 1.5, image: "images/cactus_2.png" },
   { width: 68 / 1.5, height: 70 / 1.5, image: "images/cactus_3.png" },
 ];
