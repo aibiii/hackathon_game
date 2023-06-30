@@ -32,7 +32,8 @@ const cactusImagePaths = [
   "images/cactus_10.png",
   "images/cactus_11.png",
   "images/cactus_12.png",
-  "images/cactus_13.png"
+  "images/cactus_13.png",
+  "images/cactus_14.png"
 ];
 
 const CACTI_CONFIG = [
