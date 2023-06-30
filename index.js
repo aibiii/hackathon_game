@@ -5,6 +5,8 @@ import Score from "./Score.js";
 
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
+const backgroundImage = new Image();
+backgroundImage.src = "images/background.png";
 
 const GAME_SPEED_START = 1; // 1.0
 const GAME_SPEED_INCREMENT = 0.00001;
@@ -189,8 +191,7 @@ function updateGameSpeed(frameTimeDelta) {
 }
 
 function clearScreen() {
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 }
 
 function gameLoop(currentTime) {
