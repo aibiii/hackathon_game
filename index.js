@@ -65,6 +65,15 @@ function getRandomCactusImagePath() {
   return cactusImagePaths[randomIndex];
 }
 
+const musicPaths = [
+  "music/SZA.mp3",
+  "music/ASAP.mp3",
+  "music/BRUNO.mp3",
+  // Add more music paths as needed
+];
+
+let currentMusicIndex = 0;
+
 function createSprites() {
   const playerWidthInGame = PLAYER_WIDTH * scaleRatio;
   const playerHeightInGame = PLAYER_HEIGHT * scaleRatio;
@@ -221,20 +230,19 @@ function gameLoop(currentTime) {
         const jumpSound = document.getElementById("jumpSound");
         jumpSound.currentTime = 0; // Rewind the sound to the beginning
         jumpSound.play();
-  
-        const song = document.getElementById("song");
-        song.currentTime = 0; // Rewind the song to the beginning
-        song.play();
-  
+      
+        // Play the current milestone music
+        const milestoneMusic = document.getElementById("milestoneMusic");
+        milestoneMusic.src = musicPaths[currentMusicIndex];
+        milestoneMusic.currentTime = 0; // Rewind the music to the beginning
+        milestoneMusic.play();
+      
         waitingToStart = false; // Set waitingToStart to false to start the game
+      
+        // Increment the music index for the next milestone
+        currentMusicIndex = (currentMusicIndex + 1) % musicPaths.length;
       }
-  
-      // If score is 200, then make a different sound
-      if (score.getScore() === 50) {
-        const screamSound = document.getElementById("screamSound");
-        screamSound.currentTime = 0; // Rewind the sound to the beginning
-        screamSound.play();
-      }
+      
     }, { once: true });
   }
   
