@@ -116,6 +116,8 @@ function setScreen() {
   createSprites();
 }
 
+
+
 setScreen();
 //Use setTimeout on Safari mobile rotation otherwise works fine on desktop
 window.addEventListener("resize", () => setTimeout(setScreen, 500));
@@ -210,6 +212,33 @@ function gameLoop(currentTime) {
     score.update(frameTimeDelta);
     updateGameSpeed(frameTimeDelta);
   }
+
+  if (!gameOver && !waitingToStart) {
+    showStartGameText();
+    window.addEventListener("keyup", function(event) {
+      if (event.code === "Space") {
+        const jumpSound = document.getElementById("jumpSound");
+        jumpSound.currentTime = 0; // Rewind the sound to the beginning
+        jumpSound.play();
+  
+        const song = document.getElementById("song");
+        song.currentTime = 0; // Rewind the song to the beginning
+        song.play();
+  
+        waitingToStart = false; // Set waitingToStart to false to start the game
+      }
+  
+      // If score is 200, then make a different sound
+      if (score.getScore() === 50) {
+        const screamSound = document.getElementById("screamSound");
+        screamSound.currentTime = 0; // Rewind the sound to the beginning
+        screamSound.play();
+      }
+    }, { once: true });
+  }
+  
+
+  
 
   if (!gameOver && cactiController.collideWith(player)) {
     gameOver = true;
